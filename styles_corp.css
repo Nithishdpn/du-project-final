@@ -76,6 +76,15 @@ body {
     color: var(--primary-purple);
 }
 
+/* Active navigation item styles */
+.nav-item.active > a {
+    color: var(--primary-purple);
+    font-weight: 600;
+}
+
+.nav-item.active > a::after {
+    transform: rotate(180deg);
+}
 .nav-item:hover > a::after {
     transform: rotate(180deg);
 }
@@ -702,6 +711,71 @@ body {
 
 .service-item:hover h3::after {
     width: 40px;
+}
+
+/* Universal plan card styling */
+.plan-card {
+    width: 350px;
+    max-width: 350px;
+    min-width: 350px;
+    margin: 0 auto;
+}
+
+/* 3-card grid layout */
+.plans-grid-3 {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 2-card centered grid layout */
+.plans-grid-2-centered {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive breakpoints for new grid layouts */
+@media (max-width: 1200px) {
+    .plan-card {
+        width: 320px;
+        max-width: 320px;
+        min-width: 320px;
+    }
+    
+    .plans-grid-3,
+    .plans-grid-2-centered {
+        gap: 20px;
+        max-width: 1000px;
+    }
+}
+
+@media (max-width: 768px) {
+    .plan-card {
+        width: 100%;
+        max-width: 350px;
+        min-width: 280px;
+    }
+    
+    .plans-grid-3,
+    .plans-grid-2-centered {
+        flex-direction: column;
+        align-items: center;
+        max-width: 400px;
+        gap: 20px;
+    }
 }
 
 /* Responsive Styles for Services */
@@ -1460,8 +1534,9 @@ body {
 
 .plans-grid {
     margin-top: 60px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
     gap: 50px;
     max-width: 1200px;
     margin: 60px auto 60px auto;
@@ -1469,12 +1544,11 @@ body {
     position: relative;
     z-index: 1;
     padding: 20px;
-    justify-items: center;
 }
 
 
 
-.plan-card {
+ .plan-card {
     background: white;
     border-radius: 16px;
     overflow: visible;
@@ -1482,6 +1556,23 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100%;
+    flex: 1 1 0;
+    max-width: 350px;
+    min-width: 350px;
+ }
+/* Ensure plan-content fills available space and price/CTA align at bottom */
+.plan-card .plan-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+}
+
+.plan-card .plan-price {
+    margin-top: auto;
 }
 
 .plan-image {
