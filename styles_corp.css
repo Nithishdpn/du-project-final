@@ -725,7 +725,7 @@ body {
 .plans-grid-3 {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: stretch; /* Changed from flex-start to stretch */
     gap: 24px;
     margin-bottom: 40px;
     flex-wrap: wrap;
@@ -739,7 +739,7 @@ body {
 .plans-grid-2-centered {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: stretch; /* Changed from flex-start to stretch */
     gap: 24px;
     margin-bottom: 40px;
     flex-wrap: wrap;
@@ -749,7 +749,70 @@ body {
     padding: 0 20px;
 }
 
-/* Responsive breakpoints for new grid layouts */
+/* Ensure all plan cards have consistent dimensions */
+.plan-card {
+    background: white;
+    border-radius: 16px;
+    overflow: visible;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 350px;
+    max-width: 380px;
+    min-width: 300px;
+    min-height: 700px; /* Set minimum height for consistency */
+}
+
+/* Ensure plan content uses available space properly */
+.plan-card .plan-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px;
+}
+
+/* Make plan benefits section flexible */
+.plan-benefits {
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+/* Ensure all benefit items have consistent spacing */
+.plan-benefits p {
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+/* Make sure price section stays at bottom */
+.plan-card .plan-price {
+    margin-top: auto;
+    padding: 20px;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* Ensure select plan button is consistent */
+.select-plan-btn {
+    margin: 0 auto 20px auto;
+    padding: 12px 24px;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+    color: white;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+    width: 80%;
+    max-width: 200px;
+}
+
+.select-plan-btn:hover {
+    transform: translateY(-2px);
+}
+
 @media (max-width: 1200px) {
     .plans-grid-3,
     .plans-grid-2-centered {
@@ -1591,13 +1654,12 @@ body {
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
-    height: 100%;
-    min-height: 100%;
     flex: 1 1 350px;
     max-width: 380px;
     min-width: 300px;
 }
-/* Ensure plan-content fills available space and price/CTA align at bottom */
+
+/* Ensure plan content fills available space and price/CTA align at bottom */
 .plan-card .plan-content {
     display: flex;
     flex-direction: column;
@@ -1842,7 +1904,9 @@ body {
 }
 
 .select-plan-btn {
-    width: 100%;
+    width: 80%;
+    max-width: 200px;
+    margin: 0 auto 20px auto;
     padding: 14px;
     border: none;
     border-radius: 8px;
@@ -1853,7 +1917,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
-    display: inline-block;
+    display: block;
     text-align: center;
 }
 
@@ -2011,6 +2075,8 @@ body {
     .select-plan-btn {
         padding: 12px !important;
         font-size: 14px !important;
+        width: 90% !important;
+        margin: 0 auto 20px auto !important;
     }
 }
 
