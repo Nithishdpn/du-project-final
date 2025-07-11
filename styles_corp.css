@@ -732,6 +732,7 @@ body {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    padding: 0 20px;
 }
 
 /* 2-card centered grid layout */
@@ -745,36 +746,69 @@ body {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+    padding: 0 20px;
 }
 
 /* Responsive breakpoints for new grid layouts */
 @media (max-width: 1200px) {
-    .plan-card {
-        width: 320px;
-        max-width: 320px;
-        min-width: 320px;
-    }
-    
     .plans-grid-3,
     .plans-grid-2-centered {
         gap: 20px;
         max-width: 1000px;
+        padding: 0 15px;
+    }
+    
+    .plan-card {
+        flex: 1 1 300px;
+        max-width: 320px;
+        min-width: 280px;
+    }
+}
+
+@media (max-width: 992px) {
+    .plans-grid-3 {
+        justify-content: center;
+    }
+    
+    .plans-grid-2-centered {
+        justify-content: center;
+    }
+    
+    .plan-card {
+        flex: 1 1 280px;
+        max-width: 300px;
+        min-width: 260px;
     }
 }
 
 @media (max-width: 768px) {
-    .plan-card {
-        width: 100%;
-        max-width: 350px;
-        min-width: 280px;
-    }
-    
     .plans-grid-3,
     .plans-grid-2-centered {
         flex-direction: column;
         align-items: center;
-        max-width: 400px;
+        max-width: 100%;
         gap: 20px;
+        padding: 0 15px;
+    }
+    
+    .plan-card {
+        width: 100%;
+        max-width: 400px;
+        min-width: auto;
+        flex: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .plans-grid-3,
+    .plans-grid-2-centered {
+        padding: 0 10px;
+        gap: 15px;
+    }
+    
+    .plan-card {
+        max-width: 100%;
+        margin: 0;
     }
 }
 
@@ -1537,18 +1571,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: stretch;
-    gap: 50px;
+    gap: 30px;
     max-width: 1200px;
     margin: 60px auto 60px auto;
     width: 100%;
     position: relative;
     z-index: 1;
     padding: 20px;
+    flex-wrap: wrap;
 }
 
-
-
- .plan-card {
+.plan-card {
     background: white;
     border-radius: 16px;
     overflow: visible;
@@ -1560,10 +1593,10 @@ body {
     flex-direction: column;
     height: 100%;
     min-height: 100%;
-    flex: 1 1 0;
-    max-width: 350px;
-    min-width: 350px;
- }
+    flex: 1 1 350px;
+    max-width: 380px;
+    min-width: 300px;
+}
 /* Ensure plan-content fills available space and price/CTA align at bottom */
 .plan-card .plan-content {
     display: flex;
@@ -1845,10 +1878,16 @@ body {
     }
 
     .plans-grid {
-        max-width: 800px;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
+        max-width: 100%;
+        gap: 25px;
         padding: 15px;
+        justify-content: center;
+    }
+    
+    .plan-card {
+        flex: 1 1 300px;
+        max-width: 350px;
+        min-width: 280px;
     }
 }
 
@@ -1868,10 +1907,18 @@ body {
     }
     
     .plans-grid {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-        gap: 35px;
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+        gap: 20px;
         padding: 10px;
+    }
+    
+    .plan-card {
+        width: 100%;
+        max-width: 400px;
+        min-width: auto;
+        flex: none;
     }
     
     .plan-badge-round {
@@ -1891,6 +1938,79 @@ body {
     .plan-badge-round .offer-text {
         font-size: 6px;
         line-height: 1;
+    }
+}
+
+/* Responsive styles for plan buttons */
+@media (max-width: 768px) {
+    .internet-plans button {
+        font-size: 14px !important;
+        padding: 10px 20px !important;
+        margin-bottom: 15px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .internet-plans button {
+        font-size: 12px !important;
+        padding: 8px 16px !important;
+        margin-bottom: 10px !important;
+    }
+}
+
+/* Plan content responsive adjustments */
+@media (max-width: 768px) {
+    .plan-content {
+        padding: 20px 15px !important;
+    }
+    
+    .plan-header h3 {
+        font-size: 18px !important;
+        line-height: 1.3 !important;
+    }
+    
+    .plan-benefits {
+        font-size: 13px !important;
+    }
+    
+    .plan-benefits h5 {
+        font-size: 14px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .plan-price .amount {
+        font-size: 28px !important;
+    }
+    
+    .plan-price .currency {
+        font-size: 14px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .plan-content {
+        padding: 15px 12px !important;
+    }
+    
+    .plan-header h3 {
+        font-size: 16px !important;
+    }
+    
+    .plan-benefits {
+        font-size: 12px !important;
+    }
+    
+    .plan-benefits p {
+        margin-bottom: 6px !important;
+    }
+    
+    .plan-price .amount {
+        font-size: 24px !important;
+    }
+    
+    .select-plan-btn {
+        padding: 12px !important;
+        font-size: 14px !important;
     }
 }
 
@@ -2178,5 +2298,82 @@ body {
 
     .countdown-label {
         font-size: 12px;
+    }
+}
+
+/* Section headers with dot grids - responsive styles */
+.section-title-ultimate,
+.section-title-essential {
+    overflow-x: auto;
+    padding: 0 10px;
+}
+
+.section-title-ultimate > div,
+.section-title-essential > div {
+    min-width: fit-content;
+}
+
+@media (max-width: 768px) {
+    .section-title-ultimate,
+    .section-title-essential {
+        margin: 30px 0 20px 0 !important;
+        padding: 0 5px;
+    }
+    
+    .section-title-ultimate > div,
+    .section-title-essential > div {
+        gap: 12px !important;
+    }
+    
+    .section-title-ultimate svg,
+    .section-title-essential svg {
+        width: 36px !important;
+        height: 36px !important;
+        flex-shrink: 0;
+    }
+    
+    .section-title-ultimate .gradient-bar,
+    .section-title-essential .gradient-bar {
+        min-width: 280px !important;
+        height: 40px !important;
+        padding: 0 20px !important;
+    }
+    
+    .section-title-ultimate span,
+    .section-title-essential span {
+        font-size: 1.8rem !important;
+        letter-spacing: 1px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title-ultimate,
+    .section-title-essential {
+        margin: 25px 0 15px 0 !important;
+    }
+    
+    .section-title-ultimate > div,
+    .section-title-essential > div {
+        gap: 8px !important;
+        flex-wrap: nowrap;
+    }
+    
+    .section-title-ultimate svg,
+    .section-title-essential svg {
+        width: 30px !important;
+        height: 30px !important;
+    }
+    
+    .section-title-ultimate .gradient-bar,
+    .section-title-essential .gradient-bar {
+        min-width: 200px !important;
+        height: 36px !important;
+        padding: 0 15px !important;
+    }
+    
+    .section-title-ultimate span,
+    .section-title-essential span {
+        font-size: 1.4rem !important;
+        letter-spacing: 0.5px !important;
     }
 }

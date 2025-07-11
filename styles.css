@@ -2163,3 +2163,33 @@ body {
         font-size: 12px;
     }
 }
+
+/* Contact section target/hover effect */
+#contact-section:target {
+    animation: highlightContact 2s ease-in-out;
+    box-shadow: 0 0 20px rgba(155, 45, 147, 0.3);
+    transform: scale(1.02);
+    transition: all 0.3s ease;
+}
+
+@keyframes highlightContact {
+    0% {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(155, 45, 147, 0.4);
+        transform: scale(1.03);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(155, 45, 147, 0.3);
+        transform: scale(1.02);
+    }
+}
+
+/* Additional hover effect for contact form */
+.contact-form:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
