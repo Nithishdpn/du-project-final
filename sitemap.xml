@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Home Page - du Internet Plans -->
+  <url>
+    <loc>https://duemirates.com/</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Home Internet Plans Page -->
+  <url>
+    <loc>https://duemirates.com/index.html</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Corporate Plans Page -->
+  <url>
+    <loc>https://duemirates.com/index_corp.html</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Corporate Plans Alternative URL -->
+  <url>
+    <loc>https://duemirates.com/corporate-plans</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Business Internet Plans -->
+  <url>
+    <loc>https://duemirates.com/business-internet-plans</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Home Fiber Plans -->
+  <url>
+    <loc>https://duemirates.com/home-fiber-plans</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 5G Internet Plans -->
+  <url>
+    <loc>https://duemirates.com/5g-internet-plans</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact Page -->
+  <url>
+    <loc>https://duemirates.com/contact</loc>
+    <lastmod>2025-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
