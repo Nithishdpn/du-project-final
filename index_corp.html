@@ -117,6 +117,65 @@
     </script>
 </head>
 <body>
+    <!-- Welcome Popup Modal -->
+    <div id="welcomePopup" class="popup-overlay">
+        <div class="popup-container">
+            <button class="popup-close" aria-label="Close popup">&times;</button>
+            
+            <div class="popup-content">
+                <div class="popup-header">
+                    <div class="gift-box-icon">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="5" y="20" width="50" height="35" rx="3" fill="url(#giftGradient)" stroke="#fff" stroke-width="2"/>
+                            <rect x="25" y="5" width="10" height="50" fill="#ff6b6b" stroke="#fff" stroke-width="2"/>
+                            <rect x="5" y="25" width="50" height="10" fill="#ff6b6b" stroke="#fff" stroke-width="2"/>
+                            <path d="M20 20C20 15 25 10 30 15C35 10 40 15 40 20" stroke="#fff" stroke-width="2" fill="none"/>
+                            <defs>
+                                <linearGradient id="giftGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#9b2d93"/>
+                                    <stop offset="100%" style="stop-color:#00a9e0"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <h2>🎁 Exclusive Business Offers!</h2>
+                    <h3>Get Your Best Corporate Internet Deal</h3>
+                    <p>Limited time: 25% off on Business Ultimate plans + 3 months free porting!</p>
+                </div>
+                
+                <form class="popup-form" id="popupContactForm">
+                    <div class="form-group">
+                        <input type="text" id="popup-name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="popup-phone" name="phone" placeholder="Phone Number" required>
+                    </div>
+                    
+                    <button type="submit" class="popup-submit-btn">
+                        <span>🎯 Get My Business Quote!</span>
+                    </button>
+                    
+                    <div class="popup-benefits">
+                        <div class="benefit-item">
+                            <span class="benefit-icon">✅</span>
+                            <span>Free Business Setup</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">✅</span>
+                            <span>Dedicated Support</span>
+                        </div>
+                        <div class="benefit-item">
+                            <span class="benefit-icon">✅</span>
+                            <span>Best Corporate Rates</span>
+                        </div>
+                    </div>
+                </form>
+                
+                <p class="popup-response" id="popupResponse"></p>
+            </div>
+        </div>
+    </div>
+
     <header role="banner">
         <nav class="main-nav" role="navigation" aria-label="Main navigation">
             <div class="nav-container">
@@ -1679,5 +1738,8 @@
   
 
     </script>
+    
+    <!-- Popup JavaScript -->
+    <script src="popup.js"></script>
 </body>
 </html> 
