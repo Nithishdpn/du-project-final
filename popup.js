@@ -48,13 +48,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Google Apps Script URL for form submission
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzw0vTVfsdE59fOy5Z8PRp4eapvR9OfjYJup14r5TgESpp1Wd1_KpM-nLo75r4LqaQUkA/exec'; // Replace with your Apps Script Web App URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxTpCjzJuYLCGcGhgvzZ5o8ZrpnQhHXvGT5lgjfdMN4Lkz4RaNdiqxqRgHaXfsvYvv89A/exec'; // Replace with your Apps Script Web App URL
 
     document.getElementById('popupContactForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const data = {
-        name: document.getElementById('name').value,
-        phone: document.getElementById('phone').value,
+        Name: document.getElementById('Name').value,
+        Phone: document.getElementById('Phone').value,
       };
 
       fetch(scriptURL, {
