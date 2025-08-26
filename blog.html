@@ -176,39 +176,208 @@
         </nav>
     </header>
     <main>
-       
-
-       
-
-        <section class="corporate-internet" style="background: linear-gradient(135deg, #d5a0f9 0%, #a1e1f7 100%);">
-            <div class="corporate-content" style="display: flex; justify-content: center; align-items: center; min-height: 60vh; ">
-                <div class="contact-form" id="contact-section" style="max-width: 700px; width: 100%; margin: 0 auto;  background: linear-gradient(135deg, #6B2C94 0%, #00A9E0 100%);">
-                    <h2 style="color: white;">Fill in your details & get connected today!</h2>
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <input type="text" id="name" placeholder="Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" placeholder="Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" id="phone" placeholder="Phone Number" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" placeholder="Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit">Submit</button>
-                    </form>
-                    <p id="response"></p>
-                </div>
-            </div>
+        <section class="blog-list" style="max-width:1200px;margin:40px auto;">
+            <h1 style="text-align:center;color:#9b2d93;">du Emirates Blog: Internet, Fiber, 5G & More</h1>
+            <div class="blog-grid" id="blogGrid" style="margin-top: 40px;"></div>
         </section>
-
-    
         
-
-
+        <!-- Modal HTML -->
+        <div class="blog-modal-overlay" id="blogModalOverlay">
+            <div class="blog-modal" id="blogModal">
+                <button class="blog-modal-close" id="blogModalClose" aria-label="Close">&times;</button>
+                <img id="blogModalImg" src="" alt="Blog Image">
+                <h2 id="blogModalTitle"></h2>
+                <p id="blogModalContent"></p>
+            </div>
+        </div>
     </main>
+   
+    
+    <!-- CSS for card hover, border shadows, and modal styling -->
+    <style>
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+        }
+        .blog-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: box-shadow 0.3s, transform 0.3s, border 0.3s;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        .blog-card:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            transform: translateY(-6px) scale(1.03);
+            border: 2px solid #00A9E0;
+        }
+        .blog-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            transition: filter 0.3s;
+        }
+        .blog-card:hover img {
+            filter: brightness(0.95) saturate(1.2);
+        }
+        .blog-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .blog-modal-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .blog-modal {
+            background: #fff;
+            border-radius: 18px;
+            max-width: 600px;
+            width: 95%;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+            padding: 32px 24px;
+            position: relative;
+            animation: modalPop 0.3s;
+        }
+        @keyframes modalPop {
+            from { transform: scale(0.8) translateY(40px); opacity: 0; }
+            to { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        .blog-modal-close {
+            position: absolute;
+            top: 18px;
+            right: 22px;
+            font-size: 28px;
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            z-index: 2;
+        }
+        .blog-modal img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 18px;
+        }
+        .blog-modal h2 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+        .blog-modal p {
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+    <script>
+// Blog data for popup
+const blogs = [
+    {
+        img: 'img/img01.png',
+        title: 'Top 5 du Home Internet Plans in UAE for 2025',
+        content: 'Discover the best du home internet plans in Dubai, Abu Dhabi, and across UAE. Compare fiber and 5G packages, unlimited data, and exclusive offers for new customers.  du home internet, fiber plans UAE, 5G internet Dubai'
+    },
+    {
+        img: 'img/img02.png',
+        title: 'How to Choose the Right du Fiber Internet for Your Home',
+        content: 'Learn how to select the perfect du fiber internet plan for your family. Tips on speed, coverage, installation, and pricing. : du fiber internet, best internet UAE, du installation'
+    },
+    {
+        img: 'img/img03.png',
+        title: 'du 5G Home Internet: Fastest Wireless Broadband in UAE',
+        content: 'Explore the benefits of du 5G home internet. Get ultra-fast speeds, unlimited data, and easy setup in Dubai, Abu Dhabi, and Sharjah. du 5G home internet, wireless broadband UAE, unlimited data'
+    },
+    {
+        img: 'img/img12.png',
+        title: 'du Corporate Internet Plans: Connect Your Business in UAE',
+        content: 'Find out how du corporate internet plans can boost your business productivity. Compare business fiber, dedicated lines, and 24/7 support.  du corporate internet, business fiber UAE, du business plans'
+    },
+    {
+        img: 'img/img22.png',
+        title: 'du Emirates Offers: Save Big on Internet & TV Bundles',
+        content: 'Check out the latest du Emirates offers for internet, TV, and landline bundles. Get discounts, free installation, and exclusive deals.  du offers UAE, internet TV bundles, du discounts'
+    },
+    {
+        img: 'img/img33.png',
+        title: 'How to Get du Internet Installed Fast in Dubai & Abu Dhabi',
+        content: 'Step-by-step guide to getting du internet installed quickly. Learn about the process, documents, and free installation offers.  du internet installation, free installation Dubai, du setup UAE'
+    },
+    {
+        img: 'img/img44.png',
+        title: 'du Customer Support: 24/7 Help for All Your Internet Needs',
+        content: 'Contact du customer support for help with internet, fiber, 5G, and billing. Find phone numbers, email, and live chat options. du customer support, du help UAE, du contact'
+    },
+    {
+        img: 'img/img55.png',
+        title: 'du Broadband vs. Other Providers: Why Choose du in UAE?',
+        content: 'Compare du broadband with other UAE providers. See why du is the best choice for speed, reliability, and customer service. du broadband UAE, best internet provider, du vs Etisalat'
+    }
+];
+
+// Render only 8 blog cards
+const blogGrid = document.getElementById('blogGrid');
+blogGrid.innerHTML = '';
+blogs.slice(0, 8).forEach((blog, idx) => {
+    const card = document.createElement('article');
+    card.className = 'blog-card';
+    card.innerHTML = `
+        <img src="${blog.img}" alt="${blog.title}">
+        <div style="padding:24px;flex:1;display:flex;flex-direction:column;">
+            <h2>${blog.title}</h2>
+            <p>${blog.content}</p>
+            <a href="#" class="cta-button" style="margin-top:auto;">Read More</a>
+        </div>
+    `;
+    // Open modal on image or button click
+    card.querySelector('img').addEventListener('click', () => openBlogModal(idx));
+    card.querySelector('.cta-button').addEventListener('click', (e) => {
+        e.preventDefault();
+        openBlogModal(idx);
+    });
+    blogGrid.appendChild(card);
+});
+
+// Modal logic
+const blogModalOverlay = document.getElementById('blogModalOverlay');
+const blogModalImg = document.getElementById('blogModalImg');
+const blogModalTitle = document.getElementById('blogModalTitle');
+const blogModalContent = document.getElementById('blogModalContent');
+const blogModalClose = document.getElementById('blogModalClose');
+
+function openBlogModal(idx) {
+    const blog = blogs[idx];
+    blogModalImg.src = blog.img;
+    blogModalTitle.textContent = blog.title;
+    blogModalContent.innerHTML = blog.content;
+    blogModalOverlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+}
+function closeBlogModal() {
+    blogModalOverlay.classList.remove('show');
+    document.body.style.overflow = '';
+}
+blogModalClose.addEventListener('click', closeBlogModal);
+blogModalOverlay.addEventListener('click', function(e) {
+    if (e.target === blogModalOverlay) closeBlogModal();
+});
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && blogModalOverlay.classList.contains('show')) closeBlogModal();
+});
+</script>
+
 
     <footer class="main-footer">
         <div class="footer-content">
@@ -289,186 +458,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // Mobile menu toggle functionality
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        const dropdownMenus = document.querySelectorAll('.dropdown-menu');
-        const navItems = document.querySelectorAll('.nav-item');
-
-        // Toggle mobile menu
-        if (mobileMenuToggle) {
-            mobileMenuToggle.addEventListener('click', () => {
-                mobileMenuToggle.classList.toggle('active');
-                navLinks.classList.toggle('active');
-                // Close all dropdowns when toggling mobile menu
-                dropdownMenus.forEach(menu => menu.classList.remove('show'));
-                navItems.forEach(item => item.classList.remove('active'));
-            });
-        }
-
-        // Handle dropdown menus
-        navItems.forEach(item => {
-            const link = item.querySelector('a');
-            const dropdown = item.querySelector('.dropdown-menu');
-
-            if (link && dropdown) {
-                link.addEventListener('click', (e) => {
-                    // Only prevent default on mobile
-                    if (window.innerWidth <= 768) {
-                        e.preventDefault();
-                        
-                        // Close other dropdowns
-                        navItems.forEach(otherItem => {
-                            if (otherItem !== item) {
-                                otherItem.classList.remove('active');
-                                const otherDropdown = otherItem.querySelector('.dropdown-menu');
-                                if (otherDropdown) {
-                                    otherDropdown.classList.remove('show');
-                                }
-                            }
-                        });
-
-                        // Toggle current dropdown
-                        item.classList.toggle('active');
-                        dropdown.classList.toggle('show');
-                    }
-                });
-            }
-        });
-
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-item')) {
-                dropdownMenus.forEach(menu => menu.classList.remove('show'));
-                navItems.forEach(item => item.classList.remove('active'));
-            }
-        });
-
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            if (window.innerWidth > 768) {
-                // Reset mobile menu state
-                mobileMenuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-                // Reset dropdown states
-                dropdownMenus.forEach(menu => menu.classList.remove('show'));
-                navItems.forEach(item => item.classList.remove('active'));
-            }
-        });
-
-        // Know More toggle functionality
-        function toggleKnowMore(element) {
-            const content = element.parentElement.querySelector('.know-more-content');
-            const arrow = element.querySelector('.arrow');
-            
-            if (content.style.display === 'none' || content.style.display === '') {
-                content.style.display = 'block';
-                arrow.textContent = '▲';
-                element.classList.add('active');
-            } else {
-                content.style.display = 'none';
-                arrow.textContent = '▼';
-                element.classList.remove('active');
-            }
-        }
-
-        // Simple countdown timer
-        function startCountdown() {
-            // Get elements
-            const days = document.getElementById('days');
-            const hours = document.getElementById('hours');
-            const minutes = document.getElementById('minutes');
-            const seconds = document.getElementById('seconds');
-            
-            if (!days || !hours || !minutes || !seconds) {
-                console.error('Countdown elements not found');
-                return;
-            }
-
-            // Set initial time (43 days, 22 hours, 45 minutes, 15 seconds in seconds)
-            let totalSeconds = (43 * 24 * 60 * 60) + (22 * 60 * 60) + (45 * 60) + 15;
-
-            // Update the display
-            function updateDisplay() {
-                const remainingDays = Math.floor(totalSeconds / (24 * 60 * 60));
-                const remainingHours = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60));
-                const remainingMinutes = Math.floor((totalSeconds % (60 * 60)) / 60);
-                const remainingSeconds = totalSeconds % 60;
-
-                // Update DOM with new values
-                days.textContent = String(remainingDays).padStart(2, '0');
-                hours.textContent = String(remainingHours).padStart(2, '0');
-                minutes.textContent = String(remainingMinutes).padStart(2, '0');
-                seconds.textContent = String(remainingSeconds).padStart(2, '0');
-
-                // Decrease total seconds
-                if (totalSeconds > 0) {
-                    totalSeconds--;
-                } else {
-                    // Timer finished
-                    clearInterval(countdownInterval);
-                    const countdownContainer = document.querySelector('.countdown-container');
-                    if (countdownContainer) {
-                        countdownContainer.style.display = 'none';
-                    }
-                    const heroContent = document.querySelector('.hero-content');
-                    if (heroContent) {
-                        const endMessage = document.createElement('p');
-                        endMessage.textContent = 'Offer has ended!';
-                        endMessage.className = 'countdown-end-message';
-                        heroContent.appendChild(endMessage);
-                    }
-                }
-            }
-
-            // Initial update
-            updateDisplay();
-
-            // Update every second
-            const countdownInterval = setInterval(updateDisplay, 1000);
-        }
-
-        // Start countdown when page loads
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', startCountdown);
-        } else {
-            startCountdown();
-        }
-    
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwlwd7HkTSb02AhgvVeeobIcG4fvkh6LwJ1oKzldYk6tPb4YT8rG00ZrRwj73GvIot6/exec'; // Replace with your Apps Script Web App URL
-
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const data = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        message: document.getElementById('message').value
-      };
-
-      fetch(scriptURL, {
-        method: 'POST',
-        body: JSON.stringify(data)
-      })
-      .then(response => response.text())
-        .then(result => {
-        alert("Form submitted successfully!");
-        document.getElementById('contact-form').reset();
-        })
-        .catch(error => {
-        alert("Error submitting form.");
-        console.error('Error!', error.message);
-        });
-        });
-
-
-
-  
-
-    </script>
-    
-   
 </body>
-</html> 
+</html>
