@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Google Apps Script URL for form submission
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzgbP4juabn6BV1-7Xpu_OKsMDdGFjYPoJwoOH_f86ZDnP3L87hplreZPDm6vpcUIr1DA/exec'; // Replace with your Apps Script Web App URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbykkHJH00krdDWKkpZHrx6qrWFAVJhoerEJeUwANJl1mJzKQuhEZo0fJ_gia4IlUspy7A/exec'; // Replace with your Apps Script Web App URL
 
     document.getElementById('popupContactForm').addEventListener('submit', function(e) {
       e.preventDefault();
