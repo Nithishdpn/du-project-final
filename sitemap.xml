@@ -6,7 +6,7 @@
 
   <!-- Home Page - du Internet Plans -->
   <url>
-    <loc>https://duemirates.com/</loc>
+    <loc>https://www.duconnect.ae/</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -14,7 +14,7 @@
 
   <!-- Home Internet Plans Page -->
   <url>
-    <loc>https://duemirates.com/index.html</loc>
+    <loc>https://www.duconnect.ae/index.html</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -22,7 +22,7 @@
 
   <!-- Corporate Plans Page -->
   <url>
-    <loc>https://duemirates.com/index_corp.html</loc>
+    <loc>https://www.duconnect.ae/index_corp.html</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -30,7 +30,7 @@
 
   <!-- Corporate Plans Alternative URL -->
   <url>
-    <loc>https://duemirates.com/corporate-plans</loc>
+    <loc>https://www.duconnect.ae/corporate-plans</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -38,7 +38,7 @@
 
   <!-- Business Internet Plans -->
   <url>
-    <loc>https://duemirates.com/business-internet-plans</loc>
+    <loc>https://www.duconnect.ae/business-internet-plans</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -46,7 +46,7 @@
 
   <!-- Home Fiber Plans -->
   <url>
-    <loc>https://duemirates.com/home-fiber-plans</loc>
+    <loc>https://www.duconnect.ae/home-fiber-plans</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -54,7 +54,7 @@
 
   <!-- 5G Internet Plans -->
   <url>
-    <loc>https://duemirates.com/5g-internet-plans</loc>
+    <loc>https://www.duconnect.ae/5g-internet-plans</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -62,7 +62,7 @@
 
   <!-- Contact Page -->
   <url>
-    <loc>https://duemirates.com/contact</loc>
+    <loc>https://www.duconnect.ae/contact</loc>
     <lastmod>2025-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
