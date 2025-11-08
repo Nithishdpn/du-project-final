@@ -1482,6 +1482,10 @@ body {
     border-radius: 2px;
 }
 
+/* short promo line inside popup */
+    .popup-promo{margin:8px 0 0;font-weight:800;color:#e11d2d;font-size:15px;text-align:center}
+    .popup-promo small{font-weight:700;color:#9b2d93}
+    
 .best-offers h2::after {
     content: '';
     position: absolute;

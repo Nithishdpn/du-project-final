@@ -60,20 +60,24 @@
     /* Highlighted animated subtitle for hero */
     .hero-subtitle{
         display:inline-block;
-        font-weight:800;
-        color:#e11d2d; /* vivid red */
-        background:linear-gradient(90deg, rgba(225,29,45,0.06) 0%, rgba(255,255,255,0) 60%);
-        padding:10px 14px;
-        border-radius:10px;
-        box-shadow:0 10px 30px rgba(225,29,45,0.08);
+        position:relative;
+        font-weight:900;
+        color:#fff; /* white text on vivid red chip */
+        background:linear-gradient(90deg,#e11d2d 0%,#c81b2a 60%);
+        padding:12px 16px;
+        border-radius:12px;
+        box-shadow:0 18px 40px rgba(225,29,45,0.18), inset 0 -6px 18px rgba(0,0,0,0.06);
         transform-origin:center;
-        animation: heroPulse 2.6s ease-in-out infinite, heroShimmer 3.2s linear infinite;
+        animation: heroPulse 2.4s ease-in-out infinite, heroShimmer 3.2s linear infinite;
         background-size:200% 100%;
+        text-shadow:0 1px 0 rgba(0,0,0,0.15);
+        border:2px solid rgba(255,255,255,0.06);
+        overflow:visible;
     }
 
     @keyframes heroPulse{
         0%{transform:translateY(0) scale(1)}
-        50%{transform:translateY(-3px) scale(1.01)}
+        50%{transform:translateY(-4px) scale(1.02)}
         100%{transform:translateY(0) scale(1)}
     }
 
@@ -83,9 +87,54 @@
         100%{background-position:-200% 0}
     }
 
+    /* subtle glowing ring using pseudo-element */
+    .hero-subtitle::after{
+        content:'';
+        position:absolute;
+        left:-6px;right:-6px;top:-6px;bottom:-6px;
+        border-radius:16px;
+        background:linear-gradient(90deg, rgba(155,45,147,0.12), rgba(0,169,224,0.12));
+        filter:blur(12px);
+        opacity:0.9;
+        z-index:-1;
+        animation: glowShift 4s linear infinite;
+    }
+
+    @keyframes glowShift{
+        0%{transform:translateX(-6px)}
+        50%{transform:translateX(6px)}
+        100%{transform:translateX(-6px)}
+    }
+
+    /* Respect prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce){
+        .hero-subtitle, .hero-subtitle::after{animation:none;transition:none}
+    }
+
+    /* popup promo highlight (red chip) - used inside welcome popup */
+    .popup-promo{
+        display:inline-block;margin-top:10px;padding:10px 14px;border-radius:12px;font-weight:800;color:#fff;background:linear-gradient(90deg,#e11d2d 0%,#c81b2a 60%);box-shadow:0 18px 40px rgba(225,29,45,0.14);position:relative}
+    .popup-promo small{font-weight:700;color:#ffe6e6}
+    .popup-promo::after{content:'';position:absolute;left:-6px;right:-6px;top:-6px;bottom:-6px;border-radius:16px;background:linear-gradient(90deg, rgba(155,45,147,0.12), rgba(0,169,224,0.12));filter:blur(10px);z-index:-1;animation:popupGlow 4s linear infinite}
+    @keyframes popupGlow{0%{transform:translateX(-6px)}50%{transform:translateX(6px)}100%{transform:translateX(-6px)}}
+    @media (prefers-reduced-motion: reduce){.popup-promo,.popup-promo::after{animation:none}}
+
     /* Slight stronger emphasis on small screens */
     @media (max-width:760px){
         .hero-subtitle{padding:8px 10px;font-size:0.98rem;border-radius:8px}
+    }
+    /* Corporate promo heading styles */
+    .promo-heading{font-size:26px;margin:0 0 10px;line-height:1.05;color:#0f172a;font-weight:800}
+    .promo-heading .promo-strong{color:transparent;background:linear-gradient(90deg,#9b2d93 0%,#00a9e0 100%);-webkit-background-clip:text;background-clip:text}
+    .promo-meta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:8px}
+    .price-chip{background:linear-gradient(90deg,#9b2d93,#00a9e0);color:#fff;padding:10px 14px;border-radius:12px;box-shadow:0 12px 30px rgba(15,23,42,0.12);font-weight:800;display:inline-flex;align-items:center;gap:10px}
+    .price-chip .amount{font-size:20px}
+    .price-chip .save{font-size:12px;opacity:0.95;background:rgba(255,255,255,0.12);padding:4px 8px;border-radius:8px}
+    .promo-secondary{color:#374151;font-size:15px}
+    .promo-cta{display:inline-block;background:#fff;border:2px solid #00a9e0;color:#0b2540;padding:10px 16px;border-radius:12px;font-weight:700;margin-left:6px;box-shadow:0 8px 20px rgba(0,169,224,0.08)}
+    @media(max-width:760px){
+        .promo-heading{font-size:20px}
+        .price-chip{padding:8px 10px}
     }
     </style>
     
@@ -374,6 +423,8 @@
                     <h2>🎁 Exclusive du Emirates Offers!</h2>
                     <h3>Get Your Best Internet Deal Today</h3>
                     <p>Limited time offers on fiber & 5G internet plans. Free installation included!</p>
+                    <p class="popup-promo">Exclusive Offer: Get <strong>30% off</strong> on the <strong>AED 229 → AED 169</strong> Home Wireless plan — <small>Limited time only!</small></p>
+
                 </div>
                 
                 <form class="popup-form" id="popupContactForm">
@@ -589,8 +640,17 @@
         <section class="corporate-internet">
             <div class="corporate-content">
                 <div class="features-column">
-                    <h2>High Speed du Home Internet Starting From <strong style="color: #e11d2d;">Wireless Plan – Now AED 160 (30% OFF on AED 229) + Free Installation</strong><br>
-<span class="price">Just AED 299 with with 30% Discount, Free Installastion and 2 Month Free <span style="color: blue;">Fiber plans with 35% Discount and Free Installastion</span></span></h2>
+                    <div class="promo-block">
+                        <h2 class="promo-heading">High Speed du Home Internet <span class="promo-strong">Wireless Plan</span></h2>
+                        <div class="promo-meta">
+                            <div class="price-chip" aria-hidden="true">
+                                <span class="amount">AED 160</span>
+                                <span class="save">30% OFF</span>
+                            </div>
+                            <div class="promo-secondary">Now with <strong>Free Installation</strong> — <span style="font-weight:800;color:#0b2540">Just AED 299</span> • 2 Months Free Fiber plans with <span style="color:#0b62d6;font-weight:700">35% Discount</span></div>
+                            <a class="promo-cta" href="/contact.html" aria-label="Get this offer now">Get This Offer</a>
+                        </div>
+                    </div>
                     
                     <div class="feature-list">
                         <div class="feature-item">
