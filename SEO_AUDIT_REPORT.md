@@ -1,6 +1,6 @@
 # SEO Audit Report - du Emirates Project
 
-**Date:** 2025-01-XX  
+**Date:** 2026-01-XX  
 **Project:** du-project-final  
 **Website:** https://www.duconnect.ae
 
@@ -67,7 +67,7 @@
   - `/business-internet-plans` (no actual page)
   - `/home-fiber-plans` (no actual page)
   - `/5g-internet-plans` (no actual page)
-- ⚠️ Lastmod dates are set to future date (2025-07-12) - should be current date
+- ⚠️ Lastmod dates are set to future date (2026-07-12) - should be current date
 
 ### 3. **Open Graph / Twitter Card Mismatches**
 - ⚠️ `contact.html` has OG tags pointing to `/corporate-plans` instead of `/contact`
